@@ -1,0 +1,13 @@
+{
+  "allowedTools": [
+    "read_file",
+    "list_directory",
+    "search_files"
+  ],
+  "deniedTools": [
+    "execute_command",
+    "write_file",
+    "delete_file"
+  ],
+  "note": "Default read-only allowlist. Modify per-project as needed."
+}

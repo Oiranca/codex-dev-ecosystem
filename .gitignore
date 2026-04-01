@@ -1,0 +1,49 @@
+# OS
+.DS_Store
+
+# Auth and machine-local state
+auth.json
+.codex-global-state.json
+.personality_migration
+models_cache.json
+version.json
+config.toml
+
+# Runtime history and databases
+history.jsonl
+logs_*.sqlite
+logs_*.sqlite-shm
+logs_*.sqlite-wal
+state_*.sqlite
+state_*.sqlite-shm
+state_*.sqlite-wal
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Runtime directories
+.tmp/
+tmp/
+cache/
+log/
+plugins/cache/
+sessions/
+shell_snapshots/
+sqlite/
+vendor_imports/
+
+# Codex transient state
+plugins/
+!plugins/.gitkeep
+claude-migration-backups/
+
+# Personal or generated local content
+memories/
+
+# Keep custom global assets versioned
+!agents/
+!claude-migration/
+!rules/
+!scripts/
+!skills/
+skills/.system/

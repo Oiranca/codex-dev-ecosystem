@@ -1,0 +1,37 @@
+model = "gpt-5.4"
+model_reasoning_effort = "medium"
+
+[features]
+multi_agent = true
+
+[tui]
+status_line = ["model-with-reasoning", "context-remaining", "project-root", "git-branch", "context-used"]
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[mcp_servers.playwright]
+command = "npx"
+args = ["@playwright/mcp@latest"]
+
+[mcp_servers.playwright.tools.browser_click]
+approval_mode = "approve"
+
+[mcp_servers.playwright.tools.browser_run_code]
+approval_mode = "approve"
+
+[mcp_servers.playwright.tools.browser_resize]
+approval_mode = "approve"
+
+[mcp_servers.playwright.tools.browser_close]
+approval_mode = "approve"
+
+[agents]
+max_threads = 6
+max_depth = 1
+
+# Add your trusted projects locally in config.toml, for example:
+# [projects."/absolute/path/to/project"]
+# trust_level = "trusted"
+
+# Add connector-specific app approval overrides locally in config.toml when needed.

@@ -1,0 +1,7 @@
+{
+  "name": "claude-dev-ecosystem",
+  "version": "1.0.0",
+  "description": "A robust, scalable Claude Code plugin providing a multi-agent development ecosystem with specialized agents, reusable skills, slash commands, and operational guardrails.",
+  "author": "samuelromeroarbelo",
+  "repository": "https://github.com/samuelromeroarbelo/claude-dev-ecosystem"
+}

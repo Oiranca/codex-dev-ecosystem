@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "model": "sonnet",
+  "teammateMode": "tmux",
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "github@claude-plugins-official": true
+  },
+  "permissions": {
+    "allow": [
+      "Write",
+      "Edit",
+      "MultiEdit",
+      "Bash"
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/samuelromeroarbelo/.claude/statusline-command.sh"
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "agent",
+            "prompt": "You are a post-response automation agent. Execute this workflow every time Claude finishes responding:\n\n**STEP 1 — CHECK GIT REPO**\nRun: `git rev-parse --git-dir 2>/dev/null`\nIf the command fails or returns empty output, STOP immediately and do nothing.\n\n**STEP 2 — CHECK FOR UNCOMMITTED CHANGES**\nRun: `git status --porcelain`\nIf the output is empty (no changes), STOP immediately and do nothing.\n\n**STEP 3 — REVIEW THE CODE**\nDetect the package manager by checking for lock files in order: yarn.lock → use yarn, package-lock.json → use npm, pnpm-lock.yaml → use pnpm.\nRead the 'scripts' section of package.json to find available validation commands.\nRun in this order, stopping on first failure:\n  a. lint script if it exists (e.g. yarn lint)\n  b. type-check or tsc script if it exists\n  c. build script if it exists\nIf any validation command exits with a non-zero code, print the error output and STOP — do NOT commit.\nIf no validation scripts exist, proceed to the next step.\n\n**STEP 4 — COMMIT**\nRun `git add -A` to stage all changes.\nRun `git diff --cached --stat` to understand what changed.\nGenerate a concise, conventional-commits-style message (e.g. 'fix(component): description') based on the diff.\nRun: `git commit -m \"<message>\"`\n\n**STEP 5 — PUSH**\nCheck if the current branch has a remote upstream: `git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null`\nIf it has an upstream: run `git push`\nIf it has no upstream: run `git push -u origin HEAD`\nNever force push. Never push directly to main or master — if the current branch is main or master, STOP after committing and warn the user instead of pushing.",
+            "timeout": 180,
+            "statusMessage": "Revisando, commiteando y pusheando cambios..."
+          }
+        ]
+      }
+    ]
+  }
+}
