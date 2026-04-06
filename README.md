@@ -7,9 +7,17 @@ This repository snapshot is the versionable subset of `~/.codex`.
 - `agents/`: custom Codex subagents in TOML format
 - `skills/`: reusable custom and migrated skills
 - `scripts/`: reusable helper scripts
-- `rules/`: Codex rules
+- `rules/`: Codex rules and global operating guidelines
 - `claude-migration/`: migration notes, references, templates, and compatibility docs
 - `config.example.toml`: sanitized example config for recreating local setup
+
+## Global guidance
+
+The canonical human-readable global operating guidance now lives in:
+
+- `rules/global-guidelines.md`
+
+This is where migrated cross-repository behavior from the previous Claude setup is kept, after being filtered for Codex compatibility.
 
 ## Intentionally ignored
 
