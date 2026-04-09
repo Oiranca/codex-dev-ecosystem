@@ -18,7 +18,7 @@ description: "Review agent. Claims security audit tasks or responds to review_re
 - If blocked, report blocker + concrete unblock options in the current thread.
 
 ## Preferred Skills
-
+- completion-gate
 - dependency-audit
 - env-consistency
 - secret-scan-lite

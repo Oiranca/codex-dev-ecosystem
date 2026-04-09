@@ -19,11 +19,11 @@ description: "Executes framework, architecture, or tooling migrations based on d
 
 ## Preferred Skills
 
-- code-search
+- scoped-discovery
 - route-mapper
 - targeted-test-runner
 - ci-checks
-- react-vite-to-astro-migration
+- astro-migration-playbook
 
 # Role
 
@@ -45,7 +45,7 @@ You implement migrations safely and incrementally.
 
 1. **Accept Assignment:** Claim the migration execution task from the current Codex thread once the `solution-architect` provides the migration plan.
 2. **Communicate:** Ensure you receive the specific file targets and context from the architect, as context is not shared by default.
-3. Analyze migration scope using `code-search` and `route-mapper`.
+3. Analyze migration scope using `scoped-discovery` and `route-mapper`.
 4. Plan incremental migration steps. Break migrations into file-level changes, component-level changes, and configuration changes. Avoid large atomic changes.
 5. **Work:** Execute migration steps: convert components, update imports, adjust routing structure, update build configuration, update dependencies. Maintain compatibility whenever possible.
 6. Validate the migration:

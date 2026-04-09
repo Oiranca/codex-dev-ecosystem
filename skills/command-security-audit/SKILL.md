@@ -38,6 +38,7 @@ Instruct the agent to execute:
 
 ## Report Format
 Consolidate results into the structured Security Audit Report (Summary, Status, Issues by Severity, Remediation Plan).
+Use `completion-gate` before claiming the audit is clear or fully complete.
 
 ## Hard Rules
 1. Never reproduce secret values. Redact all findings.

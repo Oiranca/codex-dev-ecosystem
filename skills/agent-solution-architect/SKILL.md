@@ -19,7 +19,7 @@ description: "Designs the minimal technical solution for the current issue and p
 
 ## Preferred Skills
 
-- code-search
+- scoped-discovery
 - repo-inventory
 - route-mapper
 - architecture-drift-check

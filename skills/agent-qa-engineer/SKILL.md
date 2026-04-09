@@ -18,7 +18,7 @@ description: "Review agent. Claims validation tasks or responds to handoff messa
 - If blocked, report blocker + concrete unblock options in the current thread.
 
 ## Preferred Skills
-
+- completion-gate
 - targeted-test-runner
 - ci-checks
 - smoke-journeys

@@ -20,7 +20,7 @@ description: "Builds a structural inventory of the repository including director
 ## Preferred Skills
 
 - repo-inventory
-- code-search
+- scoped-discovery
 - route-mapper
 
 # Role

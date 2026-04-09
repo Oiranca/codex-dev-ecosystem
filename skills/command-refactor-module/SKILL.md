@@ -30,7 +30,7 @@ You are the **Main Agent (Team Lead)**. Run a focused, safe refactor.
 
 ### Phase 1 — Planning
 Assign to **solution-architect** (or `context-manager` for scope reduction):
-- Identify boundaries via `code-search`.
+- Identify boundaries via `scoped-discovery`.
 - Classify: Extract, Rename, Simplify, or Restructure.
 - Produce Refactor Plan: Files affected, Files NOT to change, Rollback and Test strategy.
 *Wait for user confirmation.*
@@ -45,6 +45,7 @@ Assign to **software-engineer**:
 Assign to **qa-engineer**:
 - Run targeted tests first.
 - Escalate to `ci-checks` only if shared utilities or public APIs were touched.
+- Use `completion-gate` before any completion claim or cleanup suggestion.
 
 ## Hard Rules
 1. No behavior changes. No touching files outside scope.

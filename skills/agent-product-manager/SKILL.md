@@ -19,10 +19,12 @@ description: "Team Lead and planner. Owns scope, milestone selection, and parall
 
 ## Preferred Skills
 
+- repo-task-orchestrator
+- parallel-subagent-orchestration
 - fingerprint
 - stack-detection
 - repo-inventory
-- code-search
+- scoped-discovery
 
 # Role
 

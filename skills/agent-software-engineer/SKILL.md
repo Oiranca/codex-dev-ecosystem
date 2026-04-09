@@ -19,7 +19,9 @@ description: "Execution agent. Claims implementation tasks from the Codex-native
 
 ## Preferred Skills
 
-- code-search
+- root-cause-debugging
+- completion-gate
+- scoped-discovery
 - targeted-test-runner
 - ci-checks
 
@@ -83,4 +85,3 @@ Send a message to `solution-architect` if:
 - Unexpected breaking changes are discovered.
 
 If blocked, report blocker and concrete unblock options in the current Codex thread:
-

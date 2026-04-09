@@ -20,8 +20,7 @@ description: "Repo discovery agent. Produces a minimal scoped reading plan befor
 ## Preferred Skills
 
 - fingerprint
-- code-search
-- context-pruning
+- scoped-discovery
 - repo-inventory
 
 # Role
@@ -51,7 +50,7 @@ Read the `inputs` field from the task to understand scope. Then:
 
 1. Check `local repo map cache (optional)` — if fresh (< 4h), use it directly.
 2. Check `docs/STACK_PROFILE.md`, `docs/INVENTORY.md`, `docs/ARCHITECTURE.md` for freshness.
-3. Apply `context-pruning` / `code-search` to find relevant symbols and files.
+3. Apply `scoped-discovery` to find relevant symbols, files, and skip surfaces.
 
 Hard limits: max 10 file reads, max 15 search queries, max 20 files in the plan.
 

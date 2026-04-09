@@ -38,6 +38,7 @@ Spawn all three lanes in parallel via the **current Codex thread**:
 
 ## Final Report
 Consolidate results into the structured Team Review Report (Scope, Security, Performance, QA, Consolidated Verdict, Required Actions).
+Use `completion-gate` before claiming the review is clear or ready for merge.
 
 ## Hard Rules
 1. Never auto-merge. Do not reproduce secret values.
