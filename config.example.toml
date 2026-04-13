@@ -30,6 +30,9 @@ approval_mode = "approve"
 max_threads = 6
 max_depth = 1
 
+# Global token/context guidance lives in `rules/global-guidelines.md`.
+# Caveman is intended mainly for compressed memory/rule text, not mandatory chat persona.
+
 # Add your trusted projects locally in config.toml, for example:
 # [projects."/absolute/path/to/project"]
 # trust_level = "trusted"

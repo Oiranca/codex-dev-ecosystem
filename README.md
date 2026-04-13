@@ -19,6 +19,9 @@ The canonical human-readable global operating guidance now lives in:
 
 This is where migrated cross-repository behavior from the previous Claude setup is kept, after being filtered for Codex compatibility.
 
+It also carries the default global token/context policy.
+`Caveman` should be used mainly to compress memory/rule text that may be loaded into context.
+
 ## Intentionally ignored
 
 The `.gitignore` excludes machine-local state and sensitive/runtime artifacts, including:

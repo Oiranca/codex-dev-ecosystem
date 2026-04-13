@@ -12,6 +12,15 @@ They complement the existing Codex defaults and do not replace tool-specific con
 - Prefer existing project conventions over introducing new patterns.
 - Prefer gradual validation over running full pipelines unnecessarily.
 
+## Context Compression
+
+Use `caveman` primarily for context/token reduction, not as a forced chat persona.
+
+- keep global memories, preference docs, and reusable guidance compressed when practical
+- prefer short, information-dense prose in files likely to be loaded into context
+- preserve exact technical meaning, code, paths, commands, links, dates, and structure
+- response style can still vary by user request; context compression is separate from chat tone
+
 ## GitHub Communication
 
 All GitHub-facing communication should be written in English, regardless of the language used by the user in chat.
