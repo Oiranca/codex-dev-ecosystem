@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/samuelromeroarbelo/.codex/scripts/cleanup-runtime.sh && echo 'CAVEMAN ULTRA MODE ACTIVE. Rules: Max compression. Drop filler/articles/hedging. Fragments preferred. One idea per line. Pattern: [thing] [action] [reason]. Keep code/commits/security normal. Default active on every session start and resume. User says stop caveman or normal mode to deactivate.'",
+            "timeout": 2,
+            "statusMessage": "Loading caveman ultra mode"
+          }
+        ]
+      }
+    ]
+  }
+}

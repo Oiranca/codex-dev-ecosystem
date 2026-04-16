@@ -4,7 +4,6 @@
 # Auth and machine-local state
 auth.json
 .codex-global-state.json
-.personality_migration
 models_cache.json
 version.json
 config.toml
@@ -35,14 +34,12 @@ vendor_imports/
 # Codex transient state
 plugins/
 !plugins/.gitkeep
-claude-migration-backups/
 
 # Personal or generated local content
 memories/
 
 # Keep custom global assets versioned
 !agents/
-!claude-migration/
 !rules/
 !scripts/
 !skills/

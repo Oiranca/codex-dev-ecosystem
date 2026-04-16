@@ -5,10 +5,10 @@ This repository snapshot is the versionable subset of `~/.codex`.
 ## Intended tracked content
 
 - `agents/`: custom Codex subagents in TOML format
-- `skills/`: reusable custom and migrated skills
+- `skills/`: reusable custom skills
 - `scripts/`: reusable helper scripts
 - `rules/`: Codex rules and global operating guidelines
-- `claude-migration/`: migration notes, references, templates, and compatibility docs
+- `hooks.json`: global session hooks
 - `config.example.toml`: sanitized example config for recreating local setup
 
 ## Global guidance
@@ -17,10 +17,7 @@ The canonical human-readable global operating guidance now lives in:
 
 - `rules/global-guidelines.md`
 
-This is where migrated cross-repository behavior from the previous Claude setup is kept, after being filtered for Codex compatibility.
-
-It also carries the default global token/context policy.
-`Caveman` should be used mainly to compress memory/rule text that may be loaded into context.
+This is the global source of truth for cross-repository behavior and token/context policy.
 
 ## Intentionally ignored
 
@@ -32,7 +29,6 @@ The `.gitignore` excludes machine-local state and sensitive/runtime artifacts, i
 - shell snapshots and sessions
 - local `config.toml`
 - local `memories/`
-- migration backup directories
 
 ## Local setup
 

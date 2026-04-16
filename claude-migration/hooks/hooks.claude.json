@@ -1,9 +1,0 @@
-{
-  "hooks": [
-    {
-      "event": "PreToolUse",
-      "tools": ["Write", "Edit", "MultiEdit"],
-      "command": "bash ~/.claude/scripts/pre-edit-check.sh \"$CLAUDE_TOOL_INPUT_FILE_PATH\""
-    }
-  ]
-}
