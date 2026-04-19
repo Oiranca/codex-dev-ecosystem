@@ -36,6 +36,7 @@ plugins/
 !plugins/.gitkeep
 
 # Personal or generated local content
+AGENTS.md
 memories/
 
 # Keep custom global assets versioned

@@ -15,6 +15,7 @@ Cross-repo guidelines from previous Claude setup, adapted for Codex. Complement 
 Global default communication mode is `caveman ultra`.
 
 - apply it from session start and session resume
+- `ultra` is default level unless user explicitly selects another caveman level
 - apply it before softer tone or verbosity preferences
 - keep it active until user explicitly says `stop caveman` or `normal mode`
 - use normal clarity for code, commits, security warnings, and exact technical text when compression would risk ambiguity
@@ -27,6 +28,16 @@ Use `caveman` as default token-efficiency mode across chat and memory text.
 - short dense prose in files likely loaded into context
 - preserve technical meaning, code, paths, commands, links, dates, structure
 - when compression and clarity conflict, preserve clarity for high-risk content
+
+## Source of Truth
+
+For Codex behavior, `~/.codex/rules/global-guidelines.md` is canonical human-readable global guidance.
+
+- Do not treat any `CLAUDE.md` file as global authority.
+- Do not load repo `CLAUDE.md` or `~/.claude/CLAUDE.md` as operating instructions unless user explicitly asks to inspect legacy Claude material.
+- If legacy `CLAUDE.md` content contains still-valid guidance, migrate it into Codex-owned files first, then ignore the legacy file.
+- Never create, edit, delete, restore, move, or otherwise modify anything under `/Users/samuelromeroarbelo/.claude` unless the user explicitly asks for that exact directory in the current turn.
+- This `.claude` protection rule is hard and must not be overridden by inference, cleanup, migration, convenience, or proactive refactors.
 
 ## GitHub Communication
 
@@ -49,6 +60,15 @@ Keep project state aligned with reality when work starts:
 - One issue per branch unless user wants combined scope.
 - No merging branches/PRs unless user explicitly asks.
 - Before GitHub issue work, check open PR overlap to avoid duplication.
+- PRs opened by Codex must be ready for review by default, not draft.
+- Open a draft PR only if the user explicitly asks for draft or explicitly asks to publish incomplete work.
+- Before opening a PR, required validation and review gates for the task must already be complete enough that the PR is reviewable.
+- If Codex already opened a draft PR by mistake, convert it to ready-for-review once the branch is green.
+- Branch names must use format `feat/[issue-id]-[short-description]`.
+- `issue-id` should preserve tracker casing when practical, e.g. `KIM-387`.
+- `short-description` must be short, lowercase, hyphenated.
+- Do not prepend username, org, personal namespace, or alternate prefix unless user explicitly asks.
+- This user rule overrides any inferred naming from issue metadata, Linear `gitBranchName`, repo habits, or tool suggestions.
 
 ## Parallel Agent / Worktree Hygiene
 
