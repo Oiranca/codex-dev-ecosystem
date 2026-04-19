@@ -1,34 +1,79 @@
 # Global Codex Home
 
-This repository snapshot is the versionable subset of `~/.codex`.
+This repository is the versionable subset of `~/.codex`.
 
-## Intended tracked content
+It is tuned to keep always-on context small without lowering code quality, review quality, or validation quality.
 
-- `agents/`: custom Codex subagents in TOML format
-- `skills/`: reusable custom skills
-- `scripts/`: reusable helper scripts
-- `rules/`: Codex rules and global operating guidelines
-- `hooks.json`: global session hooks
-- `config.example.toml`: sanitized example config for recreating local setup
+## Repository Layout
 
-## Global guidance
+- `agents/`: custom subagent definitions
+- `skills/`: reusable skills
+- `scripts/`: helper scripts and local validators
+- `rules/`: human-readable operating guidance
+- `hooks.json`: session-start hooks
+- `config.example.toml`: shareable baseline config
 
-The canonical human-readable global operating guidance now lives in:
+## Default Operating Model
+
+Keep always-on context small. Store only universal rules in always-loaded files. Move specialized policy into separate files and read it only when the task needs it.
+
+Current defaults:
+
+- `caveman ultra` for normal chat output unless the user disables it
+- `gpt-5.4` with `medium` reasoning effort as the default baseline
+- `multi_agent = false` by default to avoid unnecessary coordination overhead
+- `GitHub`, `Linear`, and core hooks enabled
+- `Playwright` and `Stitch` stored as commented on-demand blocks in `config.toml`
+
+## Rule Files
+
+Always-on rule file:
 
 - `rules/global-guidelines.md`
 
-This is the global source of truth for cross-repository behavior and token/context policy.
+Load supplemental rule files only when relevant:
 
-Current default communication mode is `caveman ultra` for normal chat output too, unless explicitly disabled by the user.
+- `rules/github-guidelines.md`: GitHub issues, pull requests, reviews, and branch publishing
+- `rules/agent-guidelines.md`: multi-agent work, worktrees, delegated implementation, delegated review
+- `rules/handoff-guidelines.md`: handoff document updates
 
-Local validation helper:
+This split keeps default prompt weight lower while preserving the same guidance when a task actually needs it.
 
-- `python3 scripts/validate-caveman-ultra.py --text "texto aquí"`
-- `python3 scripts/validate-caveman-ultra.py --file /ruta/a/borrador.txt`
+## Memory Usage
 
-## Intentionally ignored
+`AGENTS.md` is intentionally minimal.
 
-The `.gitignore` excludes machine-local state and sensitive/runtime artifacts, including:
+Use memory lazily:
+
+- do not inline recent observation lists by default
+- use `mem-search` or `get_observations([...])` only when prior work is relevant
+- fetch only the smallest amount of prior context that unblocks the task
+
+## Tooling Strategy
+
+Default-on tools should be the tools you regularly need.
+
+Recommended baseline:
+
+- keep `GitHub` enabled if you often inspect, review, or publish PRs
+- keep `Linear` enabled if you actively track work there
+- keep browser and design MCP servers disabled unless you are actively using them
+- enable multi-agent mode only for tasks that truly benefit from parallel execution
+
+If you need an on-demand server, uncomment its block in `config.toml` and restart Codex.
+
+## Communication Validation
+
+Use the local validator when refining `caveman ultra` output examples:
+
+```bash
+python3 scripts/validate-caveman-ultra.py --text "status update here"
+python3 scripts/validate-caveman-ultra.py --file /path/to/draft.txt
+```
+
+## Ignored Local State
+
+`.gitignore` excludes machine-local and sensitive runtime artifacts, including:
 
 - auth and session state
 - SQLite databases and logs
@@ -36,9 +81,11 @@ The `.gitignore` excludes machine-local state and sensitive/runtime artifacts, i
 - shell snapshots and sessions
 - local `config.toml`
 - local `memories/`
+- generated local `AGENTS.md`
 
-## Local setup
+## Maintenance Rules
 
-1. Keep your real local configuration in `config.toml`.
-2. Use `config.example.toml` as the shareable baseline.
-3. Add personal memories, auth, and runtime state locally only.
+- keep always-loaded files short
+- avoid duplicating the same policy across rules, memory files, and README text
+- prefer on-demand tools over permanently enabled tool stacks
+- raise reasoning effort only for tasks that truly need deeper analysis

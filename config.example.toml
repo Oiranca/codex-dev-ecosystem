@@ -2,7 +2,7 @@ model = "gpt-5.4"
 model_reasoning_effort = "medium"
 
 [features]
-multi_agent = true
+multi_agent = false
 
 [tui]
 status_line = ["model-with-reasoning", "context-remaining", "project-root", "git-branch", "context-used"]
@@ -10,28 +10,41 @@ status_line = ["model-with-reasoning", "context-remaining", "project-root", "git
 [plugins."github@openai-curated"]
 enabled = true
 
-[mcp_servers.playwright]
-command = "npx"
-args = ["@playwright/mcp@latest"]
+# Enable Linear if you actively track work there.
+# [mcp_servers.linear]
+# url = "https://mcp.linear.app/mcp"
+#
+# [plugins."linear@openai-curated"]
+# enabled = true
 
-[mcp_servers.playwright.tools.browser_click]
-approval_mode = "approve"
-
-[mcp_servers.playwright.tools.browser_run_code]
-approval_mode = "approve"
-
-[mcp_servers.playwright.tools.browser_resize]
-approval_mode = "approve"
-
-[mcp_servers.playwright.tools.browser_close]
-approval_mode = "approve"
-
-[agents]
-max_threads = 6
-max_depth = 1
+# Keep heavy MCP servers disabled unless you need them for the current task.
+# Uncomment the blocks you want to use, then restart Codex.
+#
+# [mcp_servers.playwright]
+# command = "npx"
+# args = ["@playwright/mcp@latest"]
+#
+# [mcp_servers.playwright.tools.browser_click]
+# approval_mode = "approve"
+#
+# [mcp_servers.playwright.tools.browser_run_code]
+# approval_mode = "approve"
+#
+# [mcp_servers.playwright.tools.browser_resize]
+# approval_mode = "approve"
+#
+# [mcp_servers.playwright.tools.browser_close]
+# approval_mode = "approve"
+#
+# [mcp_servers.stitch]
+# url = "https://stitch.googleapis.com/mcp"
+#
+# [agents]
+# max_threads = 6
+# max_depth = 1
 
 # Global token/context guidance lives in `rules/global-guidelines.md`.
-# Current default: caveman ultra for chat output too, unless user explicitly disables it.
+# Current default: caveman ultra for normal chat output unless the user disables it.
 
 # Add your trusted projects locally in config.toml, for example:
 # [projects."/absolute/path/to/project"]
