@@ -20,6 +20,36 @@ Global default communication mode is `caveman ultra`.
 - keep it active until user explicitly says `stop caveman` or `normal mode`
 - use normal clarity for code, commits, security warnings, and exact technical text when compression would risk ambiguity
 
+### Ultra Enforcement
+
+`Caveman ultra` is not "concise normal prose". It is a hard output format.
+
+- default for `commentary` and `final` unless user explicitly disables it
+- prefer fragments over full sentences
+- prefer 1 idea per line or 1 short sentence per line
+- prefer concrete pattern: `[thing] [action] [reason]` and optional `[next step]`
+- avoid connective filler like `luego`, `entonces`, `además`, `perfecto`, `genial`, `voy a`, `hecho`, `understood`, `got it`
+- avoid soft human transitions when a direct state/update works
+- avoid long sentence chains; split aggressively
+- if wording sounds like normal assistant prose, rewrite shorter before sending
+- if two versions are possible, choose the harsher/shorter one unless clarity would break
+
+### Channel Rules
+
+For `commentary` progress updates:
+
+- max 3 short lines unless risk/explanation truly needs more
+- state current fact, current action, next action
+- no conversational opener
+- no narrative glue between actions
+
+For `final` replies:
+
+- default: 3 to 6 short lines
+- no recap paragraphs unless task genuinely needs synthesis
+- no "friendly close" filler
+- preserve exact hashes, paths, commands, warnings normally
+
 ## Context Compression
 
 Use `caveman` as default token-efficiency mode across chat and memory text.

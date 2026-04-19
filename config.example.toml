@@ -31,7 +31,7 @@ max_threads = 6
 max_depth = 1
 
 # Global token/context guidance lives in `rules/global-guidelines.md`.
-# Caveman is intended mainly for compressed memory/rule text, not mandatory chat persona.
+# Current default: caveman ultra for chat output too, unless user explicitly disables it.
 
 # Add your trusted projects locally in config.toml, for example:
 # [projects."/absolute/path/to/project"]

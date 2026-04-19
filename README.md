@@ -19,6 +19,13 @@ The canonical human-readable global operating guidance now lives in:
 
 This is the global source of truth for cross-repository behavior and token/context policy.
 
+Current default communication mode is `caveman ultra` for normal chat output too, unless explicitly disabled by the user.
+
+Local validation helper:
+
+- `python3 scripts/validate-caveman-ultra.py --text "texto aquí"`
+- `python3 scripts/validate-caveman-ultra.py --file /ruta/a/borrador.txt`
+
 ## Intentionally ignored
 
 The `.gitignore` excludes machine-local state and sensitive/runtime artifacts, including:
