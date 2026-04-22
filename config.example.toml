@@ -44,7 +44,7 @@ enabled = true
 # max_depth = 1
 
 # Global token/context guidance lives in `rules/global-guidelines.md`.
-# Current default: caveman ultra for normal chat output unless the user disables it.
+# Current default: caveman ultra loads on startup/resume and persists for the full session unless the user disables it.
 
 # Add your trusted projects locally in config.toml, for example:
 # [projects."/absolute/path/to/project"]

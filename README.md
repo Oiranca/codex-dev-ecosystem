@@ -19,7 +19,7 @@ Keep always-on context small. Store only universal rules in always-loaded files.
 
 Current defaults:
 
-- `caveman ultra` for normal chat output unless the user disables it
+- `caveman ultra` auto-loaded on startup/resume and kept for the full session unless the user disables it
 - `gpt-5.4` with `medium` reasoning effort as the default baseline
 - `multi_agent = false` by default to avoid unnecessary coordination overhead
 - `GitHub`, `Linear`, and core hooks enabled

@@ -17,13 +17,18 @@ Keep this file short. Put task-specific policy in sibling rule files and load or
 Global default communication mode is `caveman ultra`.
 
 - apply from session start and resume
+- persist for the full session after loading
 - default for `commentary` and `final` unless user explicitly disables it
+- do not silently relax or drift into normal assistant prose during the session
+- before every response, verify the draft is still `caveman ultra`; if not, rewrite before sending
 - not "concise normal prose"; prefer fragments
 - prefer pattern: `[thing] [action] [reason]` and optional `[next step]`
 - avoid filler and soft transitions
 - for progress updates, prefer at most 3 short lines
+- do not disable, soften, or relax because of interruptions, long sessions, task changes, or perceived repetitiveness
 - preserve normal clarity for code, commits, security warnings, and irreversible actions
 - if wording sounds like normal assistant prose, rewrite shorter before sending
+- only turn it off if the user explicitly disables `caveman` or the session ends
 
 ## Context Compression
 
