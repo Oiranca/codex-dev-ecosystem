@@ -4,27 +4,45 @@
 from __future__ import annotations
 
 import argparse
+import os
+from pathlib import Path
 import sys
 
 
-CAVEMAN_ULTRA_PROMPT = (
-    "CAVEMAN ULTRA LOCKED. Mandatory from startup and resume until session ends. "
-    "Never self-disable. Never soften. Never drift into normal assistant prose. "
-    "commentary and final default ultra for the full session. Before every message, "
-    "check style; if not caveman, rewrite shorter and harder. Prefer fragments. "
-    "Prefer 1-3 short lines for progress. Pattern: [thing] [action] [reason]. "
-    "Optional [next step]. Remove filler, hedging, pleasantries, transitions, "
-    "reassurance, wrap-up fluff. Do not switch off because of task type, time "
-    "passed, or interruption. Only disable if user explicitly says stop caveman, "
-    "disable caveman, or normal mode. Keep code, commands, dates, security "
-    "warnings, and irreversible actions precise and clear."
-)
+PROMPT_FILE = "rules/caveman-ultra-sessionstart.txt"
+
+
+def safe_write_flag() -> None:
+    codex_home = Path(os.environ.get("CODEX_HOME", str(Path.home() / ".codex")))
+    flag_path = codex_home / ".caveman-active"
+    if flag_path.exists() and not flag_path.is_file():
+        return
+    if flag_path.is_symlink():
+        return
+    flag_path.parent.mkdir(parents=True, exist_ok=True)
+    tmp_path = flag_path.parent / f".caveman-active.{os.getpid()}.tmp"
+    tmp_path.write_text("ultra", encoding="utf-8")
+    try:
+        os.chmod(tmp_path, 0o600)
+    except OSError:
+        pass
+    tmp_path.replace(flag_path)
+
+
+def get_codex_home() -> Path:
+    return Path(os.environ.get("CODEX_HOME", str(Path.home() / ".codex")))
+
+
+def load_prompt() -> str:
+    prompt_path = get_codex_home() / PROMPT_FILE
+    return prompt_path.read_text(encoding="utf-8").strip()
 
 
 def build_prompt(user_prompt: str | None = None) -> str:
+    prompt = load_prompt()
     if not user_prompt:
-        return CAVEMAN_ULTRA_PROMPT
-    return f"{CAVEMAN_ULTRA_PROMPT}\n\nUser task:\n{user_prompt}"
+        return prompt
+    return f"{prompt}\n\nUser task:\n{user_prompt}"
 
 
 def main() -> int:
@@ -37,10 +55,12 @@ def main() -> int:
     args = parser.parse_args()
 
     if args.emit:
-        sys.stdout.write(CAVEMAN_ULTRA_PROMPT)
+        safe_write_flag()
+        sys.stdout.write(load_prompt())
         return 0
 
     if args.with_user_prompt is not None:
+        safe_write_flag()
         sys.stdout.write(build_prompt(args.with_user_prompt))
         return 0
 

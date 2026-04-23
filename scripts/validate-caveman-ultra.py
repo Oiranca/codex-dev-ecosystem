@@ -22,9 +22,21 @@ BANNED_PHRASES = [
     "understood",
     "perfecto",
     "genial",
+    "correcto",
+    "entiendo",
     "claro",
     "por supuesto",
     "voy a",
+    "ya tengo",
+    "he ",
+    "i will",
+    "i'll",
+    "we will",
+    "we'll",
+    "done",
+    "fixed",
+    "great",
+    "good news",
     "luego",
     "entonces",
     "además",
@@ -58,18 +70,18 @@ def analyze(text: str) -> list[str]:
         if phrase in lower:
             issues.append(f"contains filler/connective: {phrase!r}")
 
-    if len(sentences) > 6:
-        issues.append(f"too many sentences/lines: {len(sentences)} > 6")
+    if len(sentences) > 5:
+        issues.append(f"too many sentences/lines: {len(sentences)} > 5")
 
-    long_sentences = [s for s in sentences if word_count(s) > 12]
+    long_sentences = [s for s in sentences if word_count(s) > 10]
     if long_sentences:
         issues.append(
-            f"contains long sentence(s): {len(long_sentences)} over 12 words"
+            f"contains long sentence(s): {len(long_sentences)} over 10 words"
         )
 
     avg_words = sum(word_count(s) for s in sentences) / max(len(sentences), 1)
-    if avg_words > 9:
-        issues.append(f"average words per sentence too high: {avg_words:.1f} > 9")
+    if avg_words > 8:
+        issues.append(f"average words per sentence too high: {avg_words:.1f} > 8")
 
     if "," in text and "->" not in text:
         issues.append("comma-heavy prose without terse separator like '->'")
@@ -82,6 +94,12 @@ def analyze(text: str) -> list[str]:
     starts = [s.split()[0].lower() for s in sentences if s.split()]
     if any(token in {"i", "yo", "we", "nosotros"} for token in starts):
         issues.append("starts like narrative prose, not terse state/update")
+
+    if re.search(r"\b(es|está|estoy|son|fue|eran)\b.+\bporque\b", lower):
+        issues.append("explanatory prose chain detected")
+
+    if len(sentences) >= 4 and lower.count(".") >= 3 and "->" not in text:
+        issues.append("too many prose sentences without terse separators")
 
     return issues
 

@@ -42,7 +42,6 @@ To reuse this home on another system:
 2. Copy `config.example.toml` to `config.toml`.
 3. Add your own credentials, trusted projects, and local connector settings only in `config.toml`.
 4. Sign in again where needed, for example GitHub, Linear, or other connectors.
-5. Optionally source `scripts/caveman-aliases.zsh` from your shell rc.
 
 The repository is intended to stay free of secrets, auth state, SQLite state, and other machine-local runtime files.
 
@@ -86,42 +85,12 @@ If you need an on-demand server, uncomment its block in `config.toml` and restar
 
 ## Communication Validation
 
-Use the local validator when refining `caveman ultra` output examples:
+When `caveman ultra` is active, use the local validator as the hard rubric for any style tuning or rule updates. Do not treat it as optional:
 
 ```bash
 python3 scripts/validate-caveman-ultra.py --text "status update here"
 python3 scripts/validate-caveman-ultra.py --file /path/to/draft.txt
 ```
-
-## Caveman Launchers
-
-Use the local wrappers when you want the strongest possible local caveman injection at session start:
-
-```bash
-~/.codex/scripts/codex-caveman-start.sh
-~/.codex/scripts/codex-caveman-start.sh -- fix the navbar spacing
-~/.codex/scripts/codex-caveman-resume.sh --last
-~/.codex/scripts/codex-caveman-exec.sh --skip-git-repo-check -- summarize this folder
-~/.codex/scripts/codex-caveman-review.sh --uncommitted
-```
-
-Argument rule:
-
-- pass Codex flags before `--`
-- pass the optional task after `--`
-
-Shell aliases live in `scripts/caveman-aliases.zsh`.
-If your shell sources that file, you get:
-
-- `cvx` -> caveman interactive start
-- `cvxr` -> caveman resume last session
-- `cvxe` -> caveman non-interactive exec
-- `cvxrv` -> caveman review of uncommitted changes
-
-Limit:
-
-- these wrappers strengthen the local startup prompt
-- they do not override system or developer instructions imposed by the host runtime
 
 ## Ignored Local State
 

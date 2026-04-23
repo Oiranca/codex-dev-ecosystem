@@ -4,6 +4,8 @@
 # Auth and machine-local state
 auth.json
 .codex-global-state.json
+.caveman-active
+.caveman-active.*
 models_cache.json
 version.json
 config.toml
