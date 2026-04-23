@@ -7,6 +7,8 @@ auth.json
 models_cache.json
 version.json
 config.toml
+installation_id
+.personality_migration
 
 # Runtime history and databases
 history.jsonl

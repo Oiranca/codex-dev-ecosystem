@@ -27,4 +27,8 @@ else
   prompt="$(python3 "$PROMPT_SCRIPT" --emit)"
 fi
 
-exec codex "${codex_args[@]}" "$prompt"
+if [ "${#codex_args[@]}" -gt 0 ]; then
+  exec codex "${codex_args[@]}" "$prompt"
+else
+  exec codex "$prompt"
+fi

@@ -6,13 +6,13 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 /Users/samuelromeroarbelo/.codex/hooks/session_start_log.py",
+            "command": "python3 ${CODEX_HOME:-$HOME/.codex}/hooks/session_start_log.py",
             "timeout": 5,
             "statusMessage": "Logging session start"
           },
           {
             "type": "command",
-            "command": "python3 /Users/samuelromeroarbelo/.codex/scripts/caveman_ultra_prompt.py --emit",
+            "command": "python3 ${CODEX_HOME:-$HOME/.codex}/scripts/caveman_ultra_prompt.py --emit",
             "timeout": 5,
             "statusMessage": "Loading caveman ultra"
           }

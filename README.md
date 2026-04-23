@@ -34,6 +34,18 @@ Current defaults:
 - `GitHub`, `Linear`, and core hooks enabled
 - `Playwright` and `Stitch` stored as commented on-demand blocks in `config.toml`
 
+## Bootstrap On Another Machine
+
+To reuse this home on another system:
+
+1. Clone it into `~/.codex`.
+2. Copy `config.example.toml` to `config.toml`.
+3. Add your own credentials, trusted projects, and local connector settings only in `config.toml`.
+4. Sign in again where needed, for example GitHub, Linear, or other connectors.
+5. Optionally source `scripts/caveman-aliases.zsh` from your shell rc.
+
+The repository is intended to stay free of secrets, auth state, SQLite state, and other machine-local runtime files.
+
 ## Rule Files
 
 Always-on rule file:
@@ -89,7 +101,7 @@ Use the local wrappers when you want the strongest possible local caveman inject
 ~/.codex/scripts/codex-caveman-start.sh
 ~/.codex/scripts/codex-caveman-start.sh -- fix the navbar spacing
 ~/.codex/scripts/codex-caveman-resume.sh --last
-~/.codex/scripts/codex-caveman-exec.sh -- --skip-git-repo-check -- summarize this folder
+~/.codex/scripts/codex-caveman-exec.sh --skip-git-repo-check -- summarize this folder
 ~/.codex/scripts/codex-caveman-review.sh --uncommitted
 ```
 

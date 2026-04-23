@@ -23,8 +23,16 @@ done
 if [ "${#task_parts[@]}" -gt 0 ]; then
   task="${task_parts[*]}"
   prompt="$(python3 "$PROMPT_SCRIPT" --with-user-prompt "$task")"
-  exec codex resume "${resume_args[@]}" "$prompt"
+  if [ "${#resume_args[@]}" -gt 0 ]; then
+    exec codex resume "${resume_args[@]}" "$prompt"
+  else
+    exec codex resume "$prompt"
+  fi
 fi
 
 prompt="$(python3 "$PROMPT_SCRIPT" --emit)"
-exec codex resume "${resume_args[@]}" "$prompt"
+if [ "${#resume_args[@]}" -gt 0 ]; then
+  exec codex resume "${resume_args[@]}" "$prompt"
+else
+  exec codex resume "$prompt"
+fi
