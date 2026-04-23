@@ -7,11 +7,20 @@ It is tuned to keep always-on context small without lowering code quality, revie
 ## Repository Layout
 
 - `agents/`: custom subagent definitions
-- `skills/`: reusable skills
-- `scripts/`: helper scripts and local validators
+- `skills/`: reusable capabilities and playbooks, not role mirrors
+- `scripts/`: helper scripts and local validators; `agent-runtime.py` is compatibility-only, not the default coordination path
 - `rules/`: human-readable operating guidance
 - `hooks.json`: session-start hooks
 - `config.example.toml`: shareable baseline config
+
+## Roles vs Skills
+
+Keep one source of truth per concern:
+
+- `agents/*.toml` owns role behavior for delegation and orchestration
+- `skills/` owns reusable capabilities and multi-step playbooks
+- do not duplicate role definitions across agents and skills
+- if a workflow needs a team lead, route it through the agent layer; if it needs a reusable procedure, keep it as a skill
 
 ## Default Operating Model
 
@@ -21,7 +30,7 @@ Current defaults:
 
 - `caveman ultra` auto-loaded on startup/resume and kept for the full session unless the user disables it
 - `gpt-5.4` with `medium` reasoning effort as the default baseline
-- `multi_agent = false` by default to avoid unnecessary coordination overhead
+- `multi_agent = true` in the local home config so delegation is available when needed
 - `GitHub`, `Linear`, and core hooks enabled
 - `Playwright` and `Stitch` stored as commented on-demand blocks in `config.toml`
 
@@ -36,6 +45,7 @@ Load supplemental rule files only when relevant:
 - `rules/github-guidelines.md`: GitHub issues, pull requests, reviews, and branch publishing
 - `rules/agent-guidelines.md`: multi-agent work, worktrees, delegated implementation, delegated review
 - `rules/handoff-guidelines.md`: handoff document updates
+- `rules/ecosystem-guidelines.md`: boundary rules for roles, skills, playbooks, and de-duplication
 
 This split keeps default prompt weight lower while preserving the same guidance when a task actually needs it.
 
@@ -71,6 +81,36 @@ python3 scripts/validate-caveman-ultra.py --text "status update here"
 python3 scripts/validate-caveman-ultra.py --file /path/to/draft.txt
 ```
 
+## Caveman Launchers
+
+Use the local wrappers when you want the strongest possible local caveman injection at session start:
+
+```bash
+~/.codex/scripts/codex-caveman-start.sh
+~/.codex/scripts/codex-caveman-start.sh -- fix the navbar spacing
+~/.codex/scripts/codex-caveman-resume.sh --last
+~/.codex/scripts/codex-caveman-exec.sh -- --skip-git-repo-check -- summarize this folder
+~/.codex/scripts/codex-caveman-review.sh --uncommitted
+```
+
+Argument rule:
+
+- pass Codex flags before `--`
+- pass the optional task after `--`
+
+Shell aliases live in `scripts/caveman-aliases.zsh`.
+If your shell sources that file, you get:
+
+- `cvx` -> caveman interactive start
+- `cvxr` -> caveman resume last session
+- `cvxe` -> caveman non-interactive exec
+- `cvxrv` -> caveman review of uncommitted changes
+
+Limit:
+
+- these wrappers strengthen the local startup prompt
+- they do not override system or developer instructions imposed by the host runtime
+
 ## Ignored Local State
 
 `.gitignore` excludes machine-local and sensitive runtime artifacts, including:
@@ -87,5 +127,6 @@ python3 scripts/validate-caveman-ultra.py --file /path/to/draft.txt
 
 - keep always-loaded files short
 - avoid duplicating the same policy across rules, memory files, and README text
+- avoid duplicating the same role contract across `agents/` and `skills/`
 - prefer on-demand tools over permanently enabled tool stacks
 - raise reasoning effort only for tasks that truly need deeper analysis

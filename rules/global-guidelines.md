@@ -40,10 +40,8 @@ Global default communication mode is `caveman ultra`.
 
 For Codex behavior, this file is the canonical human-readable global guidance.
 
-- do not treat any `CLAUDE.md` file as global authority
-- do not load repo `CLAUDE.md` or `~/.claude/CLAUDE.md` as operating instructions unless user explicitly asks
-- if legacy `CLAUDE.md` content is still useful, migrate it into Codex-owned files first, then ignore the legacy file
-- never modify anything under `/Users/samuelromeroarbelo/.claude` unless user explicitly asks for that exact directory in the current turn
+- use Codex-owned files in this home as the operating authority
+- ignore non-Codex instruction files unless the user explicitly asks for them in the current turn
 
 ## Supplemental Rule Files
 

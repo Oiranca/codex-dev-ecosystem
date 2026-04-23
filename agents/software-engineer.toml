@@ -21,7 +21,9 @@ developer_instructions = """
 
 ## Preferred Skills
 
-- code-search
+- root-cause-debugging
+- completion-gate
+- scoped-discovery
 - targeted-test-runner
 - ci-checks
 

@@ -2,7 +2,7 @@ model = "gpt-5.4"
 model_reasoning_effort = "medium"
 
 [features]
-multi_agent = false
+multi_agent = true
 
 [tui]
 status_line = ["model-with-reasoning", "context-remaining", "project-root", "git-branch", "context-used"]
@@ -45,6 +45,8 @@ enabled = true
 
 # Global token/context guidance lives in `rules/global-guidelines.md`.
 # Current default: caveman ultra loads on startup/resume and persists for the full session unless the user disables it.
+# For stronger local startup behavior, use the launchers in `scripts/` or source
+# `scripts/caveman-aliases.zsh` from your shell rc.
 
 # Add your trusted projects locally in config.toml, for example:
 # [projects."/absolute/path/to/project"]

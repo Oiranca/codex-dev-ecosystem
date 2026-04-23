@@ -6,6 +6,7 @@ description: "Use only when work splits into 2 or more independent lanes and eac
 # Parallel Subagent Orchestration
 
 Use this only when parallelism reduces cycle time without creating merge risk.
+This skill is a helper for the lead workflow. It does not replace `product-manager` or `repo-task-orchestrator`.
 
 ## Gate
 

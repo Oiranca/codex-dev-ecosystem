@@ -17,7 +17,7 @@ Use this skill to migrate a React + Vite application incrementally toward Astro 
 
 ## Purpose
 
-Convert selected React + Vite components into Astro-compatible structure by classifying them as **STATIC**, **ISLAND**, or **SHARED**, and migrating them in small, reversible batches.
+Convert selected React + Vite components into Astro-ready structure by classifying them as **STATIC**, **ISLAND**, or **SHARED**, and migrating them in small, reversible batches.
 
 ## Gating Policy
 

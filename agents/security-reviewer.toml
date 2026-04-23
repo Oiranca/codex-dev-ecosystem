@@ -21,6 +21,7 @@ developer_instructions = """
 
 ## Preferred Skills
 
+- completion-gate
 - dependency-audit
 - env-consistency
 - secret-scan-lite

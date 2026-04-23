@@ -21,7 +21,9 @@ developer_instructions = """
 
 ## Preferred Skills
 
-- code-search
+- root-cause-debugging
+- completion-gate
+- scoped-discovery
 - targeted-test-runner
 - ci-checks
 - docs-writer
@@ -45,7 +47,7 @@ You do not create new features. You only respond to review feedback.
 
 1. **Accept Assignment:** Claim the PR response task from the current Codex thread.
 2. Understand the review comment. Determine whether it is a bug report, requested refactor, style suggestion, architectural concern, or documentation request. If unclear, summarize its likely meaning.
-3. Locate relevant code using `code-search`: find the referenced file, related components, and related tests. Avoid broad repository reads.
+3. Locate relevant code using `scoped-discovery`: find the referenced file, related components, related tests, and skip surfaces. Avoid broad repository reads.
 4. Determine the appropriate response:
    - **Fix Required**: Implement a minimal fix.
    - **Clarification Required**: Explain the existing behavior.

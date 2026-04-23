@@ -57,7 +57,7 @@ Classify the cycle as one of the following:
 - **Behavior**: Allow downstream execution with limited scope; set `material_change = false`.
 
 ### 3. material
-- **Definition**: At least one changed file matches material patterns, or legacy fallback is used.
+- **Definition**: At least one changed file matches material patterns, or fallback mode is used.
 - **Behavior**: Allow full downstream execution; set `material_change = true`.
 
 ## Material File Categories
@@ -105,9 +105,9 @@ For changed files only:
 Use fallback mode if not inside a git repository, git commands fail, or changed file count exceeds 200.
 
 ### Fallback Behavior
-- Use legacy 15 high-signal files.
+- Use the 15-file high-signal fallback set.
 - Treat all fallback detections as material.
-- Set `detection_mode = "legacy-fallback"`.
+- Set `detection_mode = "fallback"`.
 - Otherwise, set `detection_mode = "git-working-tree"`.
 
 ## State File Behavior

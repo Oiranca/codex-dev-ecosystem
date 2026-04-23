@@ -19,6 +19,7 @@ delete_old_files() {
 
 delete_old_files "${CODEX_HOME}/sessions" "${KEEP_DAYS_SESSIONS}"
 delete_old_files "${CODEX_HOME}/shell_snapshots" "${KEEP_DAYS_SNAPSHOTS}"
+delete_old_files "${CODEX_HOME}/.tmp" "${KEEP_DAYS_TMP}"
 
 [ -d "${CODEX_HOME}/tmp/playwright-mcp" ] && find "${CODEX_HOME}/tmp/playwright-mcp" -type f -mtime +"${KEEP_DAYS_TMP}" -delete 2>/dev/null || true
 [ -d "${CODEX_HOME}/tmp/arg0" ] && find "${CODEX_HOME}/tmp/arg0" -type f -name '.lock' -mtime +"${KEEP_DAYS_LOCKS}" -delete 2>/dev/null || true
@@ -30,7 +31,6 @@ if [ -f "$TUI_LOG" ]; then
   if [ "${log_size:-0}" -gt "$MAX_TUI_LOG_BYTES" ]; then
     tmp_file="$(mktemp "${CODEX_HOME}/log/codex-tui.XXXXXX")"
     tail -c "$MAX_TUI_LOG_BYTES" "$TUI_LOG" > "$tmp_file"
-    cat "$tmp_file" > "$TUI_LOG"
-    rm -f "$tmp_file"
+    mv "$tmp_file" "$TUI_LOG"
   fi
 fi

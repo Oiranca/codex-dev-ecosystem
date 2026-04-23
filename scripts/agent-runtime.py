@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """
-Codex Agent Ecosystem v2 (Claude-compatible) — Agent Runtime
+Codex Agent Ecosystem v2 — Agent Runtime
 
 Provides the Task State Engine, agent messaging, distributed locks,
 and timeline for parallel multi-agent coordination.
+
+This script is an optional local compatibility helper.
+Native Codex coordination should prefer spawn_agent/send_input/current-thread handoff.
 
 Usage:
   python agent-runtime.py task create --title "..." --owner agent [options]
@@ -469,7 +472,7 @@ def timeline_append(args):
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="agent-runtime",
-        description="Codex Agent Ecosystem v2 (Claude-compatible) — Agent Runtime",
+        description="Codex Agent Ecosystem v2 — Agent Runtime",
     )
     sub = p.add_subparsers(dest="command", required=True)
 

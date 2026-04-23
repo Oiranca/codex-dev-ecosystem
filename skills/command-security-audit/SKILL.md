@@ -16,7 +16,7 @@ description: "Focused security audit workflow. Prioritizes sensitive surfaces fi
 2. Split work into independent lanes and run them with `spawn_agent` when parallelism helps.
 3. Use `send_input` to refine or redirect delegated lanes.
 4. Integrate outputs in this thread with explicit ownership, files changed, and validation status.
-5. Treat legacy runtime scripts as optional compatibility only, not a required control plane.
+5. Treat optional local runtime scripts as helpers only, not a required control plane.
 
 # /security-audit
 

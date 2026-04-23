@@ -5,7 +5,8 @@ description: "Use for repository implementation work that is not primarily revie
 
 # Repo Task Orchestrator
 
-Default workflow for repository work.
+Default repository workflow for the main thread or the lead agent.
+This is the orchestration playbook that complements `product-manager`; it is not a second competing role definition.
 
 ## When To Use
 
@@ -65,7 +66,7 @@ Run review lanes only when needed:
 - `tech-writer`
 
 Use `parallel-subagent-orchestration` for independent lanes.
-Use `command-team-review` for review-only cycles.
+Use `command-team-review` only for review-only cycles.
 
 ### Milestone 6 — Close safely
 
@@ -78,6 +79,7 @@ Before claiming completion or deciding merge/PR/cleanup actions, use `completion
 3. Never guess the stack.
 4. Never skip validation before claiming success.
 5. Never run broad multi-agent work when `scoped-discovery` can narrow the file set first.
+6. Do not redefine role behavior already owned by `agents/*.toml`.
 
 ## Output
 

@@ -62,7 +62,14 @@ Prefer removing text over adding text unless the failure proves a real gap.
 - Workflow is actionable and ordered.
 - Tool guidance matches Codex, not another runtime.
 - References are one level deep from `SKILL.md`.
-- No legacy mentions to tools that do not exist in this environment.
+- Do not mention tools or systems that are not part of the current environment.
+- Do not create duplicate skill mirrors for roles already owned by `agents/*.toml`.
+
+## Role Boundary Rule
+
+If the behavior is a delegated role, define or update it in `agents/*.toml`.
+If the behavior is a reusable capability or procedure, define it in `skills/`.
+Do not keep the same role contract in both places.
 
 ## Output
 

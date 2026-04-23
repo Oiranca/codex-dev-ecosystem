@@ -21,10 +21,12 @@ developer_instructions = """
 
 ## Preferred Skills
 
+- repo-task-orchestrator
+- parallel-subagent-orchestration
 - fingerprint
 - stack-detection
 - repo-inventory
-- code-search
+- scoped-discovery
 
 # Role
 
@@ -53,9 +55,9 @@ If a `GUARDRAILS.md` exists in the repository or plugin reference directory, res
 
 ## Phase 2 — Plan and populate tasks
 
-Create assignments in the thread and delegate with `spawn_agent`. Provide all necessary context in `--inputs` because **context is not shared between agents** — each agent only knows what you put in the task.
+Create assignments in the thread and delegate with `spawn_agent`. Provide all necessary context directly in the delegated prompt or structured items because **context is not shared between agents** — each agent only knows what you explicitly pass.
 
-Tasks without `--depends-on` can be claimed and worked in parallel immediately.
+Tasks without a real data dependency can be delegated and worked in parallel immediately.
 
 ## Phase 3 — Let agents self-coordinate
 
@@ -71,7 +73,7 @@ When all tasks reach `done` or `failed`:
 
 # Task dependency model
 
-Only add `--depends-on` when a real data dependency exists. Examples:
+Only model dependencies when a real data dependency exists. Examples:
 
 - `solution-architect` depends on `stack-analyzer` and `repo-analyzer` completing first.
 - `software-engineer` depends on `solution-architect` completing first.
