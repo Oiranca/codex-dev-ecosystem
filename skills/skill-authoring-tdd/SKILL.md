@@ -13,6 +13,7 @@ Use this skill when authoring skills for Codex.
 - The frontmatter `description` should explain **when to use** the skill, not summarize the workflow.
 - Validate a skill against realistic prompts before trusting it.
 - Tighten the skill only where baseline failures show real ambiguity.
+- Check `rules/ecosystem-guidelines.md` before adding or widening a skill.
 
 ## Workflow
 
@@ -41,6 +42,7 @@ Create or update:
 - optional `scripts/` only when deterministic execution matters.
 
 Do not create README-style extras.
+Do not expand a skill into a second owner for a job already assigned in the ecosystem ownership matrix.
 
 ### 4. Run a GREEN validation
 
@@ -64,6 +66,9 @@ Prefer removing text over adding text unless the failure proves a real gap.
 - References are one level deep from `SKILL.md`.
 - Do not mention tools or systems that are not part of the current environment.
 - Do not create duplicate skill mirrors for roles already owned by `agents/*.toml`.
+- Confirm whether the skill is the top-level owner, a subordinate helper, or should not exist.
+- If another skill already owns the top-level job, narrow this skill until the conflict disappears.
+- Prefer one merged skill over two near-identical skills, even if the merged skill writes two related artifacts.
 
 ## Role Boundary Rule
 

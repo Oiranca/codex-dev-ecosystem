@@ -74,7 +74,7 @@ Recognize and classify framework-specific special files where applicable:
 
 ## Output & Communication
 
-The **repo-analyzer** is the primary owner of this skill's output. Upon completion:
+The **repo-profiler** is the primary owner of this skill's output. Upon completion:
 
 1. **Persistence**: Write results to `docs/ROUTE_MAP.md`.
 2. **Decision Log**: Append a short completion note to `docs/DECISIONS.md`.

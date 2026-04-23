@@ -12,6 +12,7 @@ description: "Parallel multi-agent code review workflow. Coordinates Security, P
 
 Use this for review-only cycles after implementation exists.
 Do not use it as a second general orchestrator for normal implementation work.
+This playbook aggregates review lanes only. It does not replace `product-manager`, `qa-engineer`, or `security-reviewer`.
 
 ## Codex Native Orchestration (v2)
 

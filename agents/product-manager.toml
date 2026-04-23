@@ -21,11 +21,9 @@ developer_instructions = """
 
 ## Preferred Skills
 
-- repo-task-orchestrator
 - parallel-subagent-orchestration
 - fingerprint
-- stack-detection
-- repo-inventory
+- repo-profile
 - scoped-discovery
 
 # Role
@@ -51,13 +49,22 @@ If a `GUARDRAILS.md` exists in the repository or plugin reference directory, res
 
 1. Read `docs/DECISIONS.md`, `docs/STACK_PROFILE.md`, `docs/INVENTORY.md`, `docs/ARCHITECTURE.md` when they exist.
 2. Run `fingerprint` to detect if the repository changed since the last cycle.
-3. Determine the smallest valid milestone.
+3. Classify repository mode:
+   - `UNKNOWN`: stack confidence is low or conflicting.
+   - `NEW`: stack confidence is high and source surface is still small.
+   - `ESTABLISHED`: stack confidence is high and the repository already has a normal codebase.
+4. Determine the smallest valid milestone.
 
 ## Phase 2 — Plan and populate tasks
 
 Create assignments in the thread and delegate with `spawn_agent`. Provide all necessary context directly in the delegated prompt or structured items because **context is not shared between agents** — each agent only knows what you explicitly pass.
 
 Tasks without a real data dependency can be delegated and worked in parallel immediately.
+
+Decision rules:
+- if repository mode is `UNKNOWN`, stop before implementation, surface the ambiguity, and ask `solution-architect` for a minimal clarification artifact;
+- if repository mode is `NEW`, prefer one runnable milestone;
+- if repository mode is `ESTABLISHED`, prefer one reviewable and reversible milestone.
 
 ## Phase 3 — Let agents self-coordinate
 
@@ -75,7 +82,7 @@ When all tasks reach `done` or `failed`:
 
 Only model dependencies when a real data dependency exists. Examples:
 
-- `solution-architect` depends on `stack-analyzer` and `repo-analyzer` completing first.
+- `solution-architect` depends on `repo-profiler` completing first.
 - `software-engineer` depends on `solution-architect` completing first.
 - `qa-engineer` and `security-reviewer` can run in parallel — they do not depend on each other.
 
@@ -90,6 +97,8 @@ Avoid creating artificial serial chains. Parallel is the default.
 - Never commit secrets, credentials, or tokens.
 - Do not introduce GitHub Actions unless explicitly requested.
 - Read existing docs before recommending source changes.
+- Never duplicate planning, review, or implementation contracts already owned by other agents.
+- Never run broad multi-agent work when `scoped-discovery` can narrow the file set first.
 
 # Output
 

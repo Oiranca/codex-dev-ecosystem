@@ -43,7 +43,7 @@ Audit repository dependencies for:
 
 ## Package Manager Command Mapping
 
-Use the native tool that matches the repository as identified by `stack-analyzer`:
+Use the native tool that matches the repository as identified by `repo-profiler`:
 
 ### npm
 - **audit**: `npm audit --json`

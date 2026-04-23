@@ -6,6 +6,7 @@ description: "Use when migrating a React + Vite codebase to Astro and you need o
 # Astro Migration Playbook
 
 Single workflow for React + Vite to Astro migrations.
+This is the single owner of migration flow, milestone order, and batch execution.
 
 ## Preconditions
 
@@ -55,9 +56,14 @@ For each selected component:
 1. confirm classification with evidence;
 2. migrate only the planned batch;
 3. preserve styling and behavior;
-4. create wrappers when interactivity must remain;
-5. update `docs/MIGRATION_STATE.md`;
-6. append decisions to `docs/DECISIONS.md` when present.
+4. if the component is `STATIC`, convert directly to `.astro`;
+5. if the component is `SHARED`, convert shell structure to `.astro` and replace child rendering with `<slot />`;
+6. if the component is `ISLAND`, keep the interactive component in React and create the lightest viable Astro wrapper;
+7. prefer hydration in this order: `client:visible`, `client:idle`, `client:load` only when immediate interactivity is required;
+8. create new files only and never delete original React files during the batch;
+9. defer uncertain or risky components instead of guessing classification;
+10. update `docs/MIGRATION_STATE.md`;
+11. append decisions to `docs/DECISIONS.md` when present.
 
 ### Milestone 4 — Verification and cleanup
 
@@ -90,6 +96,10 @@ Which routes or components are in scope.
 ### Deferred Items
 | Item | Reason |
 |------|--------|
+
+### Failed Items
+| Item | Reason | Rollback Performed |
+|------|--------|--------------------|
 
 ### Validation
 Commands or checks run and their results.

@@ -142,7 +142,7 @@ Print only short structured summary lines:
 
 ## Completion Rules & Communication
 
-Upon completion, the agent (typically **stack-analyzer**) must **Communicate** the result to the **current Codex thread**.
+Upon completion, the agent (typically **repo-profiler**) must **Communicate** the result to the **current Codex thread**.
 
 - **If `change_type = "none"`**: Stop downstream execution; return exit code 2; log the skip in `docs/DECISIONS.md`.
 - **If `change_type = "non-material"`**: Continue with limited downstream scope; log the reduced-scope path in `docs/DECISIONS.md`.

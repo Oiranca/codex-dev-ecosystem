@@ -26,7 +26,6 @@ developer_instructions = """
 - targeted-test-runner
 - ci-checks
 - astro-migration-playbook
-- react-vite-to-astro-migration
 
 # Role
 
@@ -50,7 +49,7 @@ You implement migrations safely and incrementally.
 2. **Communicate:** Ensure you receive the specific file targets and context from the architect, as context is not shared by default.
 3. Analyze migration scope using `scoped-discovery` and `route-mapper`.
 4. Plan incremental migration steps. Break migrations into file-level changes, component-level changes, and configuration changes. Avoid large atomic changes.
-5. **Work:** Execute migration steps: convert components, update imports, adjust routing structure, update build configuration, update dependencies. Maintain compatibility whenever possible.
+5. **Work:** Execute migration steps from `astro-migration-playbook`: convert only the planned batch, update imports and wrappers, adjust routing only when the plan includes it, update migration state, and maintain compatibility whenever possible.
 6. Validate the migration:
    - Prefer `targeted-test-runner`.
    - Use `ci-checks` if necessary.
